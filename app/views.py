@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from app.forms import CarsForm
+from app.models import Cars
 
 
 # Create your views here.
 def home(request):
-    return render(request, 'index.html')
+    data = {}
+    data['db'] = Cars.objects.all()
+    return render(request, 'index.html', data)
 
 
 def form(request):
